@@ -4,12 +4,18 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J42WDXK1CK"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-J42WDXK1CK');
-    </script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
+    // DENY analytics by default (until user consents)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
+    
+    gtag('js', new Date());
+    gtag('config', 'G-J42WDXK1CK');
+</script>
   <div id="cookie-banner" style="position:fixed;bottom:0;background:#333;color:#fff;padding:10px;width:100%;text-align:center;">
   We use cookies to improve your experience. 
   <button onclick="acceptCookies()">Accept</button>
