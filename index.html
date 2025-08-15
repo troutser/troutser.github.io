@@ -1,45 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J42WDXK1CK"></script>
-    <script>
+  <!-- Google tag (gtag.js) with default DENY -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J42WDXK1CK"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    
-    // DENY analytics by default (until user consents)
     gtag('consent', 'default', {
       'analytics_storage': 'denied',
       'ad_storage': 'denied'
     });
-    
     gtag('js', new Date());
     gtag('config', 'G-J42WDXK1CK');
-</script>
-  <div id="cookie-banner" style="position:fixed;bottom:0;background:#333;color:#fff;padding:10px;width:100%;text-align:center;">
-  We use cookies to improve your experience. 
-  <button onclick="acceptCookies()">Accept</button>
-  <button onclick="rejectCookies()">Reject</button>
-</div>
+  </script>
 
-<script>
-  function acceptCookies() {
-    document.getElementById('cookie-banner').style.display = 'none';
-    localStorage.setItem('cookiesAccepted', 'true');
-    // Enable GA4 (if blocked by default)
-    gtag('consent', 'update', { 'analytics_storage': 'granted' });
-  }
-  function rejectCookies() {
-    document.getElementById('cookie-banner').style.display = 'none';
-    localStorage.setItem('cookiesAccepted', 'false');
-    // Disable GA4
-    gtag('consent', 'default', { 'analytics_storage': 'denied' });
-  }
-  // Hide banner if already answered
-  if (localStorage.getItem('cookiesAccepted')) {
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-</script>
+  <!-- Cookie Banner CSS -->
+  <style>
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #333;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      z-index: 9999;
+    }
+    #cookie-banner button {
+      margin: 0 10px;
+      padding: 5px 15px;
+    }
+  </style>
+</head>
+<body>
+  <div id="cookie-banner">
+    We use cookies to analyze traffic. 
+    <button onclick="acceptCookies()">Accept</button>
+    <button onclick="rejectCookies()">Reject</button>
+  </div>
+
+  <script>
+    // Check if user already consented
+    if (localStorage.getItem('cookiesAccepted')) {
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    function acceptCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted'
+      });
+      localStorage.setItem('cookiesAccepted', 'true');
+    }
+
+    function rejectCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      localStorage.setItem('cookiesAccepted', 'false');
+    }
+  </script>
+
   <script type="module" crossorigin src="/assets/index-CY_2sZYN.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-DNzex0oS.css">
 
@@ -47,3 +67,4 @@
     <div id="root"></div>
   </body>
 </html>
+
