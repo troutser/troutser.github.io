@@ -10,7 +10,30 @@
 
       gtag('config', 'G-J42WDXK1CK');
     </script>
+  <div id="cookie-banner" style="position:fixed;bottom:0;background:#333;color:#fff;padding:10px;width:100%;text-align:center;">
+  We use cookies to improve your experience. 
+  <button onclick="acceptCookies()">Accept</button>
+  <button onclick="rejectCookies()">Reject</button>
+</div>
 
+<script>
+  function acceptCookies() {
+    document.getElementById('cookie-banner').style.display = 'none';
+    localStorage.setItem('cookiesAccepted', 'true');
+    // Enable GA4 (if blocked by default)
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
+  function rejectCookies() {
+    document.getElementById('cookie-banner').style.display = 'none';
+    localStorage.setItem('cookiesAccepted', 'false');
+    // Disable GA4
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
+  }
+  // Hide banner if already answered
+  if (localStorage.getItem('cookiesAccepted')) {
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+</script>
   <script type="module" crossorigin src="/assets/index-CY_2sZYN.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-DNzex0oS.css">
 
